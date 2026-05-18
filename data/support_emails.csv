@@ -1,0 +1,120 @@
+email_id,subject,body,sender_email,timestamp,priority
+E001,App Crash Report - Calendar View,"Hello Support Team,
+
+I am writing to report a critical bug in your application. The app crashes immediately when I navigate to the Calendar view.
+
+Device: iPhone 13 Pro
+OS: iOS 17.3.1
+App Version: 3.0.1
+
+Steps to reproduce:
+1. Open the app
+2. Tap on the Calendar icon in the bottom navigation
+3. App crashes to home screen immediately
+
+This has been happening consistently since the 3.0.1 update three days ago. I have tried:
+- Reinstalling the app
+- Restarting the device
+- Clearing app cache
+
+Please fix this urgently as I rely on this app for my daily work.
+
+Best regards,
+Emma Wilson",emma.wilson@email.com,2026-05-12 09:23:00,High
+E002,Login Issue After Update,"Hi,
+
+Since the latest update I cannot log in to my account. The app just shows a loading spinner indefinitely after I enter my credentials.
+
+Phone: Samsung Galaxy S22
+Android version: 14
+App version: 3.0.1
+
+I've tried resetting my password but the issue persists. Please help!
+
+Thanks,
+David",david.chen@company.com,2026-05-11 14:45:00,High
+E003,Data Loss - Tasks Disappeared,"URGENT: All my tasks from the past month have disappeared after the 3.0.0 update. I had 87 tasks across 5 projects and they are all gone now.
+
+Device: Google Pixel 7
+Android: 13
+App Version: 3.0.0
+
+This is unacceptable. I need my data back immediately. Please escalate this to your engineering team.
+
+- Robert Martinez",r.martinez@startup.io,2026-05-10 16:30:00,
+E004,Notification Bug on Android,"Hello,
+
+Push notifications have stopped working on my Android device since I updated to version 3.0.0.
+
+Device info:
+- OnePlus 11
+- Android 13
+- App version 3.0.0
+
+Steps to reproduce:
+1. Set a reminder for a task
+2. Wait for the scheduled time
+3. No notification appears
+
+All notification permissions are enabled. I've checked battery optimization settings too. The issue started right after the update.
+
+Regards,
+Priya Sharma",priya.sharma@email.com,2026-05-09 11:15:00,Medium
+E005,Feature Request: Dark Mode,"Hello FeedWise Team,
+
+I love using your app but I really need a dark mode option. I work late nights and the bright white screen causes eye strain after prolonged use.
+
+Many competing apps already have this feature. It would make your app much more comfortable to use in low-light environments.
+
+Could you please consider adding this in a future update? This is a highly requested feature based on the community forums I've seen.
+
+Thank you,
+James O'Brien",james.obrien@design.co,2026-05-13 08:00:00,
+E006,Suggestion: Google Calendar Sync,"Hi Support,
+
+I'd like to suggest adding Google Calendar synchronization to the app. Currently I have to maintain two separate systems for my tasks and calendar events.
+
+A two-way sync would be incredibly useful for:
+1. Seeing tasks alongside calendar events
+2. Automatically blocking time for tasks in Google Calendar
+3. Getting unified reminders
+
+I'm happy to beta test this feature if you're working on it.
+
+Best,
+Sophie Turner",sophie.t@freelancer.com,2026-05-10 13:20:00,Low
+E007,Request for PDF Export Feature,"To whom it may concern,
+
+We are a team of 15 people using your app for project management. We frequently need to share task lists and project status in meetings.
+
+Could you add functionality to export tasks and projects to PDF or Excel format? This would greatly improve our team's workflow and eliminate the need to manually recreate reports.
+
+This feature would likely benefit many business users of your application.
+
+Regards,
+Michael Chen
+Team Lead, DevTeam Alpha",m.chen@enterprise.com,2026-05-11 10:30:00,Medium
+E008,Subscription Price Too High,"Hello,
+
+I've been using your app for 6 months and while I like it, the subscription price is too steep. $9.99/month adds up to almost $120/year for what is essentially a to-do list.
+
+Competitors offer similar functionality for free or at much lower prices. I'm considering cancelling unless you can offer a discount or a more affordable plan.
+
+Please let me know if you have any promotional pricing available.
+
+Thanks,
+Karen Williams",karen.w@personal.com,2026-05-08 09:45:00,Low
+E009,Terrible Customer Service Experience,"I am extremely disappointed with your customer service. I submitted a support ticket 10 days ago about a sync issue and have received NO response whatsoever.
+
+This is completely unacceptable for a paid service. I am paying $9.99/month and can't even get a response to a basic support request.
+
+I will be disputing this charge with my credit card company and leaving negative reviews on every platform I can find.
+
+- An Very Angry Customer",angry.customer@email.com,2026-05-07 17:00:00,High
+E010,WIN A FREE iPHONE 15!!!,"CONGRATULATIONS!!! You have been selected to WIN a FREE iPhone 15 Pro Max!!!
+
+Click here to claim your prize: www.fakeprizescam.example.com
+
+This offer expires in 24 hours! Don't miss out! Forward this to 10 friends for DOUBLE the prize!!!
+
+Act now!!!",noreply@spamscam.example.com,2026-05-14 03:00:00,

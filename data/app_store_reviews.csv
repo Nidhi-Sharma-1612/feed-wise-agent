@@ -1,0 +1,21 @@
+review_id,platform,rating,review_text,user_name,date,app_version
+R001,Google Play,1,"App crashes every time I try to open the calendar view. This started happening after the 3.0.1 update. I've tried reinstalling but no luck. Completely unusable now.",Sarah_M,2026-05-10,3.0.1
+R002,App Store,2,"Can't login since the last update. It just shows a spinning wheel forever. I'm on iPhone 14 running iOS 17.4. Please fix this ASAP, I have important tasks in there.",JohnDoe42,2026-05-11,3.0.1
+R003,Google Play,1,"Data sync is completely broken. My tasks on Android aren't syncing with my desktop. Lost 2 days of work because of this bug. Very frustrated.",AngelicaR,2026-05-09,2.9.5
+R004,App Store,2,"The app freezes when I try to add a new task while offline. It worked fine before. Now it just hangs and I have to force close it. Samsung Galaxy S23, Android 14.",TechUserPro,2026-05-12,3.0.1
+R005,Google Play,1,"Notifications are not showing up at all after the latest update. I have all permissions enabled. Galaxy Note 20, Android 13. Steps: open app > settings > notifications > enable all. Still nothing.",MikeT_Dev,2026-05-08,3.0.0
+R006,App Store,4,"Please add a dark mode option! I use this app late at night and the bright white screen is really hard on the eyes. Would give 5 stars if you add this.",NightOwl99,2026-05-13,3.0.1
+R007,Google Play,3,"Would love to see a Pomodoro timer built into the app. Currently I have to switch between apps for time management. Integration would be amazing!",ProductivityFan,2026-05-07,2.9.5
+R008,App Store,4,"Missing the ability to export tasks to PDF or Excel. I need to share my task lists with my team in meetings. Please add export functionality.",BusinessUser_J,2026-05-11,3.0.1
+R009,Google Play,3,"Please add Google Calendar integration. It's frustrating to manage tasks in this app and calendar events in Google Calendar separately. Sync would be a game changer.",CalendarKing,2026-05-10,2.9.5
+R010,App Store,4,"A recurring tasks feature would be great. Right now I have to manually re-create the same tasks every week. Automation would save so much time.",WeeklyPlanner,2026-05-09,3.0.0
+R011,App Store,5,"Amazing app! It has completely transformed how I manage my day. Clean interface, fast, and reliable. Best productivity app I've ever used. Highly recommend!",HappyUser_Lisa,2026-05-14,3.0.1
+R012,Google Play,5,"Love the new collaboration features in 3.0! My team is so much more organized now. The shared workspaces are intuitive and the notifications work perfectly.",TeamLead_Bob,2026-05-13,3.0.1
+R013,App Store,4,"Works perfectly for my daily planning. Simple, elegant, and does exactly what it promises. The widget for the home screen is a nice touch too.",SimplePlanner,2026-05-12,3.0.0
+R014,Google Play,5,"This app saved my productivity. I went from missing deadlines to being the most organized person on my team. Thank you for building such a great product!",ProductivityNinja,2026-05-11,2.9.5
+R015,App Store,2,"The app is way too expensive for what it offers. $9.99 per month for basic task management? There are free alternatives that do the same thing. Not worth it.",BudgetUser,2026-05-08,3.0.1
+R016,Google Play,3,"App is noticeably slow when you have more than 100 tasks. Loading the main screen takes 5-6 seconds on my Pixel 7. Performance needs serious improvement.",SlowAppComplaint,2026-05-10,3.0.0
+R017,App Store,1,"Customer support is terrible. I've sent 3 emails about my sync issue and haven't heard back in a week. The app itself has bugs and nobody helps.",FrustratedCustomer,2026-05-09,3.0.1
+R018,Google Play,2,"BUY MY CRYPTO NOW!!! AMAZING RETURNS GUARANTEED!!! Visit www.cryptoscam.example.com for 1000% profits! Don't miss this opportunity!!!",CryptoSpammer123,2026-05-14,3.0.1
+R019,App Store,3,"asdfghjkl qwerty zxcvbnm poiuyt lkjhg mnbvcx. Random text here. Not related to app. Just testing something.",RandomUser,2026-05-13,2.9.5
+R020,Google Play,4,"Check out this amazing weight loss product! Only $29.99 for a month supply. www.spamproduct.example.com. Works better than any app!",SpammerBot,2026-05-12,3.0.0

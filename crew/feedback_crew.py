@@ -41,6 +41,12 @@ except ImportError:
 try:
     from chromadb.config import Settings as _test_settings  # noqa: F401
 except Exception:
+    # Remove ALL partial chromadb entries left behind by the failed import.
+    # Without this, Python sees chromadb in sys.modules as a non-package
+    # module (no __path__) and refuses to import chromadb.config from our hook.
+    for _k in list(sys.modules.keys()):
+        if _k == "chromadb" or _k.startswith("chromadb."):
+            del sys.modules[_k]
     import importlib.machinery
 
     # pydantic-v2-compatible Settings stub so crewai can build ChromaDBConfig

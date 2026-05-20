@@ -8,8 +8,8 @@ os.environ.setdefault("PYTHONIOENCODING", "utf-8")
 os.environ.setdefault("CREWAI_TELEMETRY_OPT_OUT", "true")
 
 # Fix Windows charmap encoding for CrewAI emoji output
-encoding = getattr(sys.stdout, "encoding", None)
-if isinstance(encoding, str) and encoding.lower() != "utf-8":
+_stdout_enc = getattr(sys.stdout, "encoding", None)
+if isinstance(_stdout_enc, str) and _stdout_enc.lower() != "utf-8":
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     except (AttributeError, OSError):

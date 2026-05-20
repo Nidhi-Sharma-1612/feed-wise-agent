@@ -34,16 +34,78 @@ except ImportError:
     _shim.resource_string = lambda *_args, **_kwargs: b""
     sys.modules["pkg_resources"] = _shim
 
-# chromadb blocker — crewai 1.x tries to import chromadb for RAG/knowledge features.
-# chromadb uses pydantic v1 internally which breaks on Python 3.14.
-# Blocking it here forces crewai to use its MissingChromaDBConfig fallback.
-# We don't use RAG features so this has no functional impact.
+# chromadb import hook — crewai 1.x imports chromadb throughout its core.
+# chromadb's pydantic v1 Settings breaks on Python 3.14 + uv.
+# We install a meta-path finder that intercepts ALL chromadb imports and
+# returns smart stub modules. We don't use RAG so stubs never run real code.
 try:
-    import chromadb  # noqa: F401
+    from chromadb.config import Settings as _test_settings  # noqa: F401
 except Exception:
-    for _mod in [k for k in sys.modules if k.startswith("chromadb")]:
-        sys.modules[_mod] = None  # type: ignore[assignment]
-    sys.modules.setdefault("chromadb", None)  # type: ignore[assignment]
+    import importlib.machinery
+
+    # pydantic-v2-compatible Settings stub so crewai can build ChromaDBConfig
+    try:
+        from pydantic_core import core_schema as _core_schema
+
+        class _Settings:
+            def __init__(self, **kwargs: object) -> None:
+                for k, v in kwargs.items():
+                    setattr(self, k, v)
+
+            @classmethod
+            def __get_pydantic_core_schema__(
+                cls, _source: object, _handler: object
+            ) -> object:
+                return _core_schema.any_schema()
+
+    except Exception:
+        class _Settings:  # type: ignore[no-redef]
+            def __init__(self, **kwargs: object) -> None:
+                for k, v in kwargs.items():
+                    setattr(self, k, v)
+
+    class _ChromaStubModule(types.ModuleType):
+        """A stub chromadb module whose attributes auto-return stubs."""
+
+        def __getattr__(self, name: str) -> object:
+            # Classes (CamelCase) → return a no-op class
+            if name and name[0].isupper():
+                if name == "Settings":
+                    setattr(self, name, _Settings)
+                    return _Settings
+                stub_cls = type(name, (), {
+                    "__init__": lambda self, *a, **kw: None,
+                    "__call__": lambda self, *a, **kw: [],
+                    "__class_getitem__": classmethod(lambda cls, *a: cls),
+                })
+                setattr(self, name, stub_cls)
+                return stub_cls
+            # Constants / strings
+            if name in ("DEFAULT_DATABASE", "DEFAULT_TENANT"):
+                return f"default_{name.split('_')[-1].lower()}"
+            return None
+
+    class _ChromaStubLoader:
+        def create_module(self, spec: object) -> None:
+            return None
+
+        def exec_module(self, module: types.ModuleType) -> None:
+            module.__class__ = _ChromaStubModule
+
+    class _ChromaFinder:
+        def find_spec(
+            self,
+            name: str,
+            path: object = None,
+            target: object = None,
+        ) -> object:
+            if name.startswith("chromadb"):
+                return importlib.machinery.ModuleSpec(
+                    name, _ChromaStubLoader(), is_package=True
+                )
+            return None
+
+    sys.meta_path.insert(0, _ChromaFinder())
 
 from crewai import Crew, Process
 from agents.feedback_agents import (

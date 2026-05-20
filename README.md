@@ -1,5 +1,7 @@
 # FeedWise Agent — Intelligent User Feedback Analysis System
 
+**Live Demo:** https://nidhi-sharma-1612-feed-wise-agent-uiapp-ct9s1g.streamlit.app
+
 Capstone project for the Agentic AI Certification course.  
 Automates triaging of app store reviews and support emails using a **6-agent CrewAI pipeline**.
 

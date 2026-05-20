@@ -15,9 +15,8 @@ if isinstance(encoding, str) and encoding.lower() != "utf-8":
     except (AttributeError, OSError):
         pass
 
-# pkg_resources shim — crewai 0.80.0 imports pkg_resources in its telemetry
-# module, but Python 3.14 + uv don't expose it even when setuptools is installed.
-# We provide a minimal shim using importlib.metadata (stdlib since Python 3.8).
+# pkg_resources shim — some crewai versions import pkg_resources in telemetry,
+# but Python 3.14 + uv don't expose it even when setuptools is installed.
 try:
     import pkg_resources  # noqa: F401
 except ImportError:
@@ -34,6 +33,17 @@ except ImportError:
     _shim.require = lambda *_args, **_kwargs: None
     _shim.resource_string = lambda *_args, **_kwargs: b""
     sys.modules["pkg_resources"] = _shim
+
+# chromadb blocker — crewai 1.x tries to import chromadb for RAG/knowledge features.
+# chromadb uses pydantic v1 internally which breaks on Python 3.14.
+# Blocking it here forces crewai to use its MissingChromaDBConfig fallback.
+# We don't use RAG features so this has no functional impact.
+try:
+    import chromadb  # noqa: F401
+except Exception:
+    for _mod in [k for k in sys.modules if k.startswith("chromadb")]:
+        sys.modules[_mod] = None  # type: ignore[assignment]
+    sys.modules.setdefault("chromadb", None)  # type: ignore[assignment]
 
 from crewai import Crew, Process
 from agents.feedback_agents import (

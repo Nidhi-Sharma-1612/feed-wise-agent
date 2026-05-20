@@ -1,6 +1,8 @@
 import os
 import sys
 import time
+import types
+import importlib.metadata
 
 os.environ.setdefault("PYTHONIOENCODING", "utf-8")
 os.environ.setdefault("CREWAI_TELEMETRY_OPT_OUT", "true")
@@ -12,6 +14,26 @@ if isinstance(encoding, str) and encoding.lower() != "utf-8":
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     except (AttributeError, OSError):
         pass
+
+# pkg_resources shim — crewai 0.80.0 imports pkg_resources in its telemetry
+# module, but Python 3.14 + uv don't expose it even when setuptools is installed.
+# We provide a minimal shim using importlib.metadata (stdlib since Python 3.8).
+try:
+    import pkg_resources  # noqa: F401
+except ImportError:
+    _shim = types.ModuleType("pkg_resources")
+
+    def _get_distribution(name: str):
+        try:
+            version = importlib.metadata.version(name)
+        except Exception:
+            version = "0.0.0"
+        return types.SimpleNamespace(version=version)
+
+    _shim.get_distribution = _get_distribution
+    _shim.require = lambda *_args, **_kwargs: None
+    _shim.resource_string = lambda *_args, **_kwargs: b""
+    sys.modules["pkg_resources"] = _shim
 
 from crewai import Crew, Process
 from agents.feedback_agents import (
